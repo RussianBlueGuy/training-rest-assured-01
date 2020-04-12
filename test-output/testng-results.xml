@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="7646" started-at="2020-04-12T08:40:53 PDT" finished-at="2020-04-12T08:41:01 PDT">
+  <suite name="Default suite" duration-ms="4224" started-at="2020-04-12T12:38:41 PDT" finished-at="2020-04-12T12:38:45 PDT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="7646" started-at="2020-04-12T08:40:53 PDT" finished-at="2020-04-12T08:41:01 PDT">
-      <class name="com.herokuapp.restfulbooker.UpdateBookingTests">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.herokuapp.restfulbooker.UpdateBookingTests@5a8806ef]" name="setUp" is-config="true" duration-ms="553" started-at="2020-04-12T08:40:53 PDT" finished-at="2020-04-12T08:40:54 PDT">
+    <test name="Default test" duration-ms="4224" started-at="2020-04-12T12:38:41 PDT" finished-at="2020-04-12T12:38:45 PDT">
+      <class name="com.herokuapp.restfulbooker.GetBookingTests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.herokuapp.restfulbooker.GetBookingTests@5a8806ef]" name="setUp" is-config="true" duration-ms="513" started-at="2020-04-12T12:38:41 PDT" finished-at="2020-04-12T12:38:42 PDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="updateBookingTest()[pri:0, instance:com.herokuapp.restfulbooker.UpdateBookingTests@5a8806ef]" name="updateBookingTest" duration-ms="7055" started-at="2020-04-12T08:40:54 PDT" finished-at="2020-04-12T08:41:01 PDT">
+        <test-method status="PASS" signature="getBookingTest()[pri:0, instance:com.herokuapp.restfulbooker.GetBookingTests@5a8806ef]" name="getBookingTest" duration-ms="3680" started-at="2020-04-12T12:38:42 PDT" finished-at="2020-04-12T12:38:45 PDT">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- updateBookingTest -->
-      </class> <!-- com.herokuapp.restfulbooker.UpdateBookingTests -->
+        </test-method> <!-- getBookingTest -->
+      </class> <!-- com.herokuapp.restfulbooker.GetBookingTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
