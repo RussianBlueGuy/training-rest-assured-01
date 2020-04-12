@@ -5,11 +5,12 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import io.restassured.RestAssured;
+import io.restassured.http.Header;
 import io.restassured.response.Response;
 
 public class GetBookingTests extends BaseTest {
 
-	@Test
+	@Test(enabled = false)
 	public void getBookingTest() {
 		
 		// createBooking() in BaseTest Class in src/main/java folder
@@ -55,6 +56,63 @@ public class GetBookingTests extends BaseTest {
 		softAssert.assertEquals(actualCheckout, "2020-03-27", "checkout in response is not expected");
 		
 		String actualAdditionalNeeds = responseGet.jsonPath().getString("additionalneeds");
+		softAssert.assertEquals(actualAdditionalNeeds, "Baby crib", "additionalneeds in response is not expected");
+		
+		// this is required for Soft Assert, otherwise it will give false pass on test
+		softAssert.assertAll();
+
+	}
+	
+	@Test
+	public void getBookingXMLTest() {
+		// createBooking() in BaseTest Class in src/main/java folder
+		Response responseCreate = createBooking();
+		
+		// Print responseCreate to console
+		responseCreate.prettyPrint();
+		
+		// Add a header to our request to get the response in XML instead of JSON
+		// Header(name, value) is from Restful-booker website GetBooking end-point Header info
+		Header xmlHeader = new Header("Accept", "application/xml");
+		spec.header(xmlHeader);
+		
+		// Get the id from the reponse to use it in the update
+		int bookingId = responseCreate.jsonPath().getInt("bookingid");
+		
+		// Set path parameter
+		spec.pathParam("bookingId", bookingId);
+		
+		// Get response with booking
+		Response responseGet = RestAssured.given(spec).get("/booking/{bookingId}");
+		responseGet.prettyPrint();
+		//responseGet.print();
+
+		// Verify response 200 - hard assert because if code is not 200 then test should
+		// stop
+		Assert.assertEquals(responseGet.getStatusCode(), 200, "Status code should be 200, but it's not.");
+
+		// Verify all fields - soft assert to verify each field... needs assertAll() at the end (see below)
+		SoftAssert softAssert = new SoftAssert();
+		String actualFirstName = responseGet.xmlPath().getString("booking.firstname");
+		softAssert.assertEquals(actualFirstName, "Daffy", "firstname in response is not expected");
+
+		String actualLastName = responseGet.xmlPath().getString("booking.lastname");
+		softAssert.assertEquals(actualLastName, "Duck", "lastname in response is not expected");
+
+		int price = responseGet.xmlPath().getInt("booking.totalprice");
+		softAssert.assertEquals(price, 150, "totalprice in response is not expected");
+
+		boolean depositPaid = responseGet.xmlPath().getBoolean("booking.depositpaid");
+//		softAssert.assertFalse(depositPaid, "depositpaid should be false but it's not");
+		softAssert.assertTrue(depositPaid, "depositpaid should be true but it's not");
+
+		String actualCheckin = responseGet.xmlPath().getString("booking.bookingdates.checkin");
+		softAssert.assertEquals(actualCheckin, "2020-03-25", "checkin in response is not expected");
+
+		String actualCheckout = responseGet.xmlPath().getString("booking.bookingdates.checkout");
+		softAssert.assertEquals(actualCheckout, "2020-03-27", "checkout in response is not expected");
+		
+		String actualAdditionalNeeds = responseGet.xmlPath().getString("booking.additionalneeds");
 		softAssert.assertEquals(actualAdditionalNeeds, "Baby crib", "additionalneeds in response is not expected");
 		
 		// this is required for Soft Assert, otherwise it will give false pass on test
