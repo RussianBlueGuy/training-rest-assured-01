@@ -1,6 +1,5 @@
 package com.herokuapp.restfulbooker;
 
-import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -60,42 +59,24 @@ public class CreateBookingTests extends BaseTest {
 		Booking booking = new Booking("Foghorn", "Leghorn", 245, true, bookingdates, "Chicks");
 
 		// Get response
-		Response response = RestAssured.given(spec).contentType(ContentType.JSON).body(booking.toString())
+		Response response = RestAssured.given(spec).contentType(ContentType.JSON).body(booking)
 				.post("/booking");
 		
 		// Print response to console
 		response.prettyPrint();
+		
+		// Use BookingId POJO and de-serialize response to bookingid variable
+		BookingId bookingid = response.as(BookingId.class);
 
 		// Verifications
 		// Verify response 200 - hard assert because if code is not 200 then test should stop
 		Assert.assertEquals(response.getStatusCode(), 200, "Status code should be 200, but it's not.");
-
-		// Verify all fields - soft assert to verify each field... needs assertAll() at the end (see below)
-		SoftAssert softAssert = new SoftAssert();
-		String actualFirstName = response.jsonPath().getString("booking.firstname");
-		softAssert.assertEquals(actualFirstName, "Foghorn", "firstname in response is not expected");
-
-		String actualLastName = response.jsonPath().getString("booking.lastname");
-		softAssert.assertEquals(actualLastName, "Leghorn", "lastname in response is not expected");
-
-		int price = response.jsonPath().getInt("booking.totalprice");
-		softAssert.assertEquals(price, 245, "totalprice in response is not expected");
-
-		boolean depositPaid = response.jsonPath().getBoolean("booking.depositpaid");
-//		softAssert.assertFalse(depositPaid, "depositpaid should be false but it's not");
-		 softAssert.assertTrue(depositPaid, "depositpaid should be true but it's not");
-
-		String actualCheckin = response.jsonPath().getString("booking.bookingdates.checkin");
-		softAssert.assertEquals(actualCheckin, "2020-04-01", "checkin in response is not expected");
-
-		String actualCheckout = response.jsonPath().getString("booking.bookingdates.checkout");
-		softAssert.assertEquals(actualCheckout, "2020-04-05", "checkout in response is not expected");
 		
-		String actualAdditionalNeeds = response.jsonPath().getString("booking.additionalneeds");
-		softAssert.assertEquals(actualAdditionalNeeds, "Chicks", "additionalneeds in response is not expected");
-		
-		// this is required for Soft Assert, otherwise it will give false pass on test
-		softAssert.assertAll();
+		System.out.println("Request booking : " + booking.toString());
+		System.out.println("Response booking: " + bookingid.getBooking().toString());
+
+		// Verify all fields
+		Assert.assertEquals(bookingid.getBooking().toString(), booking.toString());
 		
 	}
 

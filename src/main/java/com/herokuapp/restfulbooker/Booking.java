@@ -9,6 +9,10 @@ public class Booking {
 	private BookingDates bookingdates;
 	private String additionalneeds;
 	
+	public Booking() {
+		
+	}
+	
 	public Booking(String firstname, 
 			String lastname, 
 			int totalprice, 
