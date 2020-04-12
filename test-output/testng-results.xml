@@ -1,21 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
+<testng-results skipped="0" failed="1" ignored="1" total="2" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="4428" started-at="2020-04-12T13:55:35 PDT" finished-at="2020-04-12T13:55:39 PDT">
+  <suite name="Default suite" duration-ms="2909" started-at="2020-04-12T14:36:35 PDT" finished-at="2020-04-12T14:36:38 PDT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="4428" started-at="2020-04-12T13:55:35 PDT" finished-at="2020-04-12T13:55:39 PDT">
-      <class name="com.herokuapp.restfulbooker.GetBookingTests">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.herokuapp.restfulbooker.GetBookingTests@5a8806ef]" name="setUp" is-config="true" duration-ms="552" started-at="2020-04-12T13:55:35 PDT" finished-at="2020-04-12T13:55:35 PDT">
+    <test name="Default test" duration-ms="2909" started-at="2020-04-12T14:36:35 PDT" finished-at="2020-04-12T14:36:38 PDT">
+      <class name="com.herokuapp.restfulbooker.CreateBookingTests">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.herokuapp.restfulbooker.CreateBookingTests@2a17b7b6]" name="setUp" is-config="true" duration-ms="636" started-at="2020-04-12T14:36:35 PDT" finished-at="2020-04-12T14:36:36 PDT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="getBookingXMLTest()[pri:0, instance:com.herokuapp.restfulbooker.GetBookingTests@5a8806ef]" name="getBookingXMLTest" duration-ms="3841" started-at="2020-04-12T13:55:35 PDT" finished-at="2020-04-12T13:55:39 PDT">
+        <test-method status="FAIL" signature="createBookingWithPOJOTest()[pri:0, instance:com.herokuapp.restfulbooker.CreateBookingTests@2a17b7b6]" name="createBookingWithPOJOTest" duration-ms="2236" started-at="2020-04-12T14:36:36 PDT" finished-at="2020-04-12T14:36:38 PDT">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[Status code should be 200, but it's not. expected [200] but found [400]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: Status code should be 200, but it's not. expected [200] but found [400]
+at org.testng.Assert.fail(Assert.java:97)
+at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+at org.testng.Assert.assertEquals(Assert.java:118)
+at org.testng.Assert.assertEquals(Assert.java:839)
+at com.herokuapp.restfulbooker.CreateBookingTests.createBookingWithPOJOTest(CreateBookingTests.java:71)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:134)
+at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:597)
+at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:816)
+at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.util.ArrayList.forEach(Unknown Source)
+at org.testng.TestRunner.privateRun(TestRunner.java:766)
+at org.testng.TestRunner.run(TestRunner.java:587)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1187)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1109)
+at org.testng.TestNG.runSuites(TestNG.java:1039)
+at org.testng.TestNG.run(TestNG.java:1007)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- getBookingXMLTest -->
-      </class> <!-- com.herokuapp.restfulbooker.GetBookingTests -->
+        </test-method> <!-- createBookingWithPOJOTest -->
+      </class> <!-- com.herokuapp.restfulbooker.CreateBookingTests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
