@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="5080" started-at="2020-04-11T17:11:05 PDT" finished-at="2020-04-11T17:11:10 PDT">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="5080" started-at="2020-04-11T17:11:05 PDT" finished-at="2020-04-11T17:11:10 PDT">
+      <class name="com.herokuapp.restfulbooker.DeleteBookingTests">
+        <test-method status="PASS" signature="deleteBookingTest()[pri:0, instance:com.herokuapp.restfulbooker.DeleteBookingTests@6737fd8f]" name="deleteBookingTest" duration-ms="5032" started-at="2020-04-11T17:11:05 PDT" finished-at="2020-04-11T17:11:10 PDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteBookingTest -->
+      </class> <!-- com.herokuapp.restfulbooker.DeleteBookingTests -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
