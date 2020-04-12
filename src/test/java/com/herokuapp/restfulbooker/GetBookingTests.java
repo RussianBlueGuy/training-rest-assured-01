@@ -7,12 +7,12 @@ import org.testng.asserts.SoftAssert;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
-public class GetBookingTests {
+public class GetBookingTests extends BaseTest {
 
 	@Test
 	public void getBookingTest() {
 		// Get response with booking
-		Response response = RestAssured.get("https://restful-booker.herokuapp.com/booking/1");
+		Response response = RestAssured.given(spec).get("/booking/1");
 		response.print();
 
 		// Verify response 200 - hard assert because if code is not 200 then test should

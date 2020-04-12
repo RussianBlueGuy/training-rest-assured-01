@@ -20,8 +20,8 @@ public class DeleteBookingTests extends BaseTest {
 		int bookingId = responseCreate.jsonPath().getInt("bookingid");
 
 		// DELETE - delete booking created above using id
-		Response responseDelete = RestAssured.given().auth().preemptive().basic("admin", "password123")
-				.delete("https://restful-booker.herokuapp.com/booking/" + bookingId);
+		Response responseDelete = RestAssured.given(spec).auth().preemptive().basic("admin", "password123")
+				.delete("/booking/" + bookingId);
 		
 		// Print responseUpdate to console
 		responseDelete.prettyPrint();		
@@ -31,7 +31,7 @@ public class DeleteBookingTests extends BaseTest {
 		Assert.assertEquals(responseDelete.getStatusCode(), 201, "Status code should be 201, but it's not.");
 		
 		// Verify we're not able to get the booking using the id after the delete		
-		Response responseGet = RestAssured.get("https://restful-booker.herokuapp.com/booking" + bookingId);
+		Response responseGet = RestAssured.given(spec).get("/booking" + bookingId);
 		
 		// Print responseUpdate to console
 		responseGet.prettyPrint();
